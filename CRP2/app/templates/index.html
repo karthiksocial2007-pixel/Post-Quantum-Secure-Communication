@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Post-Quantum Secure Communication</title>
+
+<link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}"
+>
+
+</head>
+
+<body>
+
+<!-- ========================================================= -->
+
+<!-- TOP BAR -->
+
+<!-- ========================================================= -->
+
+<header class="topbar">
+
+<div class="brand">
+
+    <div class="brand-icon">
+        🔐
+    </div>
+
+    <div class="brand-text">
+
+        <h1>
+            Post-Quantum Secure Communication
+        </h1>
+
+        <p>
+            Secure messaging using post-quantum cryptography
+        </p>
+
+    </div>
+
+</div>
+
+
+<div class="system-status">
+
+    <span class="status-dot" id="statusDot"></span>
+
+    <span id="systemStatus">
+        Checking system...
+    </span>
+
+</div>
+
+</header>
+
+<!-- ========================================================= -->
+<!-- LAB BAR (guided flow + live state) -->
+<!-- ========================================================= -->
+<nav class="lab-bar" aria-label="Demo progress">
+    <ol class="lab-steps">
+        <li id="step-send" class="lab-step active" onclick="scrollToId('messagePanel')">
+            <span class="lab-step-num">1</span><span class="lab-step-text">Send</span>
+        </li>
+        <li id="step-attack" class="lab-step" onclick="scrollToId('attackSection')">
+            <span class="lab-step-num">2</span><span class="lab-step-text">Attack <em>(optional)</em></span>
+        </li>
+        <li id="step-receive" class="lab-step" onclick="scrollToId('messageResult')">
+            <span class="lab-step-num">3</span><span class="lab-step-text">Receive</span>
+        </li>
+    </ol>
+    <div class="lab-chips" aria-live="polite">
+        <span id="relayChip" class="chip chip-idle">Relay: empty</span>
+        <span id="integrityChip" class="chip chip-idle">No packet yet</span>
+    </div>
+</nav>
+
+
+<main class="container">
+
+<!-- ========================================================= -->
+
+<!-- CRYPTOGRAPHIC PROTECTION -->
+
+<!-- ========================================================= -->
+
+<section class="section">
+
+<div class="section-heading">
+
+    <div>
+
+        <span class="section-label">
+            SECURITY FOUNDATION
+        </span>
+
+        <h2>
+            Cryptographic Protection
+        </h2>
+
+        <p>
+            Four cryptographic components work together to
+            protect the communication channel.
+        </p>
+
+    </div>
+
+</div>
+
+
+<div class="algorithm-grid">
+
+
+    <!-- ML-KEM -->
+
+    <div class="algorithm-card">
+
+        <div class="algorithm-top">
+
+            <div class="algorithm-icon">
+                🔑
+            </div>
+
+            <span class="active-badge">
+                ACTIVE
+            </span>
+
+        </div>
+
+        <h3>
+            ML-KEM-768
+        </h3>
+
+        <p>
+            Post-quantum key establishment used to
+            create a shared secret between participants.
+        </p>
+
+        <div class="algorithm-purpose">
+            Key Establishment
+        </div>
+
+    </div>
+
+
+
+    <!-- HKDF -->
+
+    <div class="algorithm-card">
+
+        <div class="algorithm-top">
+
+            <div class="algorithm-icon">
+                🔄
+            </div>
+
+            <span class="active-badge">
+                ACTIVE
+            </span>
+
+        </div>
+
+        <h3>
+            HKDF-SHA256
+        </h3>
+
+        <p>
+            Derives a secure 256-bit AES session key
+            from the shared secret.
+        </p>
+
+        <div class="algorithm-purpose">
+            Key Derivation
+        </div>
+
+    </div>
+
+
+
+    <!-- AES -->
+
+    <div class="algorithm-card">
+
+        <div class="algorithm-top">
+
+            <div class="algorithm-icon">
+                🛡️
+            </div>
+
+            <span class="active-badge">
+                ACTIVE
+            </span>
+
+        </div>
+
+        <h3>
+            AES-256-GCM
+        </h3>
+
+        <p>
+            Authenticated encryption protects the
+            confidentiality and integrity of messages.
+        </p>
+
+        <div class="algorithm-purpose">
+            Message Encryption
+        </div>
+
+    </div>
+
+
+
+    <!-- ML-DSA -->
+
+    <div class="algorithm-card">
+
+        <div class="algorithm-top">
+
+            <div class="algorithm-icon">
+                ✍️
+            </div>
+
+            <span class="active-badge">
+                ACTIVE
+            </span>
+
+        </div>
+
+        <h3>
+            ML-DSA-65
+        </h3>
+
+        <p>
+            Post-quantum digital signatures verify
+            message authenticity.
+        </p>
+
+        <div class="algorithm-purpose">
+            Authentication
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+
+<!-- HOW IT WORKS -->
+
+<!-- ========================================================= -->
+
+<section class="section architecture-section">
+
+<div class="section-heading">
+
+    <span class="section-label">
+        SYSTEM ARCHITECTURE
+    </span>
+
+    <h2>
+        How Secure Communication Works
+    </h2>
+
+    <p>
+        The system combines post-quantum key establishment,
+        key derivation, authenticated encryption and
+        digital signatures.
+    </p>
+
+</div>
+
+
+<div class="architecture-flow">
+
+
+    <!-- STEP 1 -->
+
+    <div class="flow-step">
+
+        <div class="flow-number">
+            1
+        </div>
+
+        <div class="flow-icon">
+            🔑
+        </div>
+
+        <h3>
+            ML-KEM-768
+        </h3>
+
+        <p>
+            Establishes a shared secret between
+            the communicating participants.
+        </p>
+
+    </div>
+
+
+    <div class="flow-arrow">
+        →
+    </div>
+
+
+    <!-- STEP 2 -->
+
+    <div class="flow-step">
+
+        <div class="flow-number">
+            2
+        </div>
+
+        <div class="flow-icon">
+            🔄
+        </div>
+
+        <h3>
+            HKDF-SHA256
+        </h3>
+
+        <p>
+            Converts the shared secret into a
+            secure 256-bit session key.
+        </p>
+
+    </div>
+
+
+    <div class="flow-arrow">
+        →
+    </div>
+
+
+    <!-- STEP 3 -->
+
+    <div class="flow-step">
+
+        <div class="flow-number">
+            3
+        </div>
+
+        <div class="flow-icon">
+            🔒
+        </div>
+
+        <h3>
+            AES-256-GCM
+        </h3>
+
+        <p>
+            Encrypts the message and authenticates
+            the encrypted data.
+        </p>
+
+    </div>
+
+
+    <div class="flow-arrow">
+        →
+    </div>
+
+
+    <!-- STEP 4 -->
+
+    <div class="flow-step">
+
+        <div class="flow-number">
+            4
+        </div>
+
+        <div class="flow-icon">
+            ✍️
+        </div>
+
+        <h3>
+            ML-DSA-65
+        </h3>
+
+        <p>
+            Creates a digital signature that the
+            receiver can verify.
+        </p>
+
+    </div>
+
+
+    <div class="flow-arrow">
+        →
+    </div>
+
+
+    <!-- STEP 5 -->
+
+    <div class="flow-step">
+
+        <div class="flow-number">
+            5
+        </div>
+
+        <div class="flow-icon">
+            📨
+        </div>
+
+        <h3>
+            Secure Packet
+        </h3>
+
+        <p>
+            The encrypted and signed packet is
+            transferred through the relay.
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- ARCHITECTURE EXPLANATION -->
+
+<div class="architecture-note">
+
+    <div class="architecture-note-icon">
+        💡
+    </div>
+
+    <div>
+
+        <strong>
+            Complete protection flow
+        </strong>
+
+        <p>
+            ML-KEM-768 establishes the shared secret.
+            HKDF-SHA256 derives the AES session key.
+            AES-256-GCM encrypts the message.
+            ML-DSA-65 signs the message.
+            The receiver decrypts the message and
+            verifies the signature before accepting it.
+        </p>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+
+<!-- SECURE COMMUNICATION -->
+
+<!-- ========================================================= -->
+
+<section class="section communication-section">
+
+<div class="section-heading">
+
+    <span class="section-label">
+        LIVE DEMONSTRATION
+    </span>
+
+    <h2>
+        Secure Communication
+    </h2>
+
+    <p>
+        Send an encrypted and digitally signed message
+        between Alice and Bob.
+    </p>
+
+</div>
+
+
+<!-- PARTICIPANTS -->
+
+<div class="communication-layout">
+
+
+    <!-- ALICE -->
+
+    <div class="participant-card">
+
+        <div class="avatar alice-avatar">
+            A
+        </div>
+
+        <h3>
+            Alice
+        </h3>
+
+        <span class="participant-status" id="aliceStatus">
+            Ready to send
+        </span>
+
+    </div>
+
+
+
+    <!-- CONNECTION -->
+
+    <div class="connection">
+
+        <div class="connection-line"></div>
+
+        <div class="connection-center">
+
+            <div class="connection-lock">
+                🔒
+            </div>
+
+            <span>
+                Encrypted Channel
+            </span>
+
+        </div>
+
+        <div class="connection-line"></div>
+
+    </div>
+
+
+
+    <!-- BOB -->
+
+    <div class="participant-card">
+
+        <div class="avatar bob-avatar">
+            B
+        </div>
+
+        <h3>
+            Bob
+        </h3>
+
+        <span class="participant-status" id="bobStatus">
+            Ready to receive
+        </span>
+
+    </div>
+
+</div>
+
+
+
+<!-- MESSAGE FORM -->
+
+<div class="message-panel" id="messagePanel">
+
+    <div class="message-header">
+
+        <div>
+
+            <h3>
+                Send Secure Message
+            </h3>
+
+            <p>
+                The message will be encrypted and signed
+                before transmission.
+            </p>
+
+        </div>
+
+        <span
+            id="messageStatus"
+            class="message-status"
+        >
+            Waiting
+        </span>
+
+    </div>
+
+
+    <div class="form-row">
+
+
+        <div class="form-group">
+
+            <label for="sender">
+                Sender
+            </label>
+
+            <select id="sender">
+
+                <option value="Alice">
+                    Alice
+                </option>
+
+                <option value="Bob">
+                    Bob
+                </option>
+
+            </select>
+
+        </div>
+
+
+
+        <div class="form-group message-input-group">
+
+            <label for="message">
+                Message
+            </label>
+
+            <input
+                type="text"
+                id="message"
+                placeholder="Enter your secure message..."
+                autocomplete="off"
+            >
+
+        </div>
+
+    </div>
+
+
+    <div class="button-row">
+
+        <button
+            class="primary-button"
+            id="sendButton"
+            onclick="sendMessage()"
+        >
+            🔒 Send Secure Message
+        </button>
+
+        <button
+            class="ghost-button"
+            id="resetButton"
+            onclick="resetSession()"
+            title="Generate new keys and run a fresh ML-KEM handshake"
+        >
+            ↻ New Session
+        </button>
+
+    </div>
+
+    <div id="sendError" class="send-error hidden" role="alert"></div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+
+<!-- SECURE PACKET -->
+
+<!-- ========================================================= -->
+
+<section
+    class="section result-section hidden"
+    id="messageResult"
+>
+
+<div class="section-heading">
+
+    <span class="section-label">
+        ENCRYPTED TRANSMISSION
+    </span>
+
+    <h2>
+        Secure Packet
+    </h2>
+    <span id="packetState" class="chip chip-info">In transit</span>
+
+    <p>
+        The original message has been encrypted and
+        digitally signed.
+    </p>
+
+</div>
+
+
+<!-- PACKET METADATA -->
+
+<div class="packet-grid">
+
+
+    <div class="packet-item">
+
+        <span>
+            Sender
+        </span>
+
+        <strong id="packetSender">
+            -
+        </strong>
+
+    </div>
+
+
+    <div class="packet-item">
+
+        <span>
+            Receiver
+        </span>
+
+        <strong id="packetReceiver">
+            -
+        </strong>
+
+    </div>
+
+
+    <div class="packet-item">
+
+        <span>
+            Message ID
+        </span>
+
+        <strong id="packetMessageId">
+            -
+        </strong>
+
+    </div>
+
+
+    <div class="packet-item">
+
+        <span>
+            Timestamp
+        </span>
+
+        <strong id="packetTimestamp">
+            -
+        </strong>
+
+    </div>
+
+</div>
+
+
+
+<!-- CRYPTOGRAPHIC DATA -->
+
+<div class="crypto-data">
+
+
+    <!-- NONCE -->
+
+    <div class="crypto-box">
+
+        <div class="crypto-box-header">
+
+            <div>
+
+                <div class="crypto-title">
+                    🔐 Nonce
+                </div>
+
+                <div class="crypto-description">
+                    Unique value used by AES-GCM
+                </div>
+
+            </div>
+
+            <button
+                class="view-button"
+                onclick="toggleCrypto('packetNonce', this)"
+            >
+                Show
+            </button>
+
+        </div>
+
+
+        <code
+            id="packetNonce"
+            class="collapsed-crypto"
+        >
+            -
+        </code>
+
+    </div>
+
+
+
+    <!-- CIPHERTEXT -->
+
+    <div class="crypto-box">
+
+        <div class="crypto-box-header">
+
+            <div>
+
+                <div class="crypto-title">
+                    🔒 Encrypted Ciphertext
+                </div>
+
+                <div class="crypto-description">
+                    Message protected using AES-256-GCM
+                </div>
+
+            </div>
+
+            <button
+                class="view-button"
+                onclick="toggleCrypto('packetCiphertext', this)"
+            >
+                Show
+            </button>
+
+        </div>
+
+
+        <div class="crypto-preview">
+            <span id="ciphertextPreview">
+                Encrypted data generated after sending
+            </span>
+        </div>
+
+
+        <code
+            id="packetCiphertext"
+            class="collapsed-crypto"
+        >
+            -
+        </code>
+
+    </div>
+
+
+
+    <!-- SIGNATURE -->
+
+    <div class="crypto-box">
+
+        <div class="crypto-box-header">
+
+            <div>
+
+                <div class="crypto-title">
+                    ✍️ ML-DSA-65 Signature
+                </div>
+
+                <div class="crypto-description">
+                    Digital signature used for authenticity
+                </div>
+
+            </div>
+
+            <button
+                class="view-button"
+                onclick="toggleCrypto('packetSignature', this)"
+            >
+                Show
+            </button>
+
+        </div>
+
+
+        <div class="crypto-preview">
+            <span id="signaturePreview">
+                Digital signature generated after sending
+            </span>
+        </div>
+
+
+        <code
+            id="packetSignature"
+            class="collapsed-crypto"
+        >
+            -
+        </code>
+
+    </div>
+
+</div>
+
+
+
+<!-- RECEIVE BUTTON -->
+
+<button
+    class="secondary-button"
+    id="receiveButton"
+    onclick="receiveMessage()"
+>
+    🔓 Receive &amp; Verify Message
+</button>
+
+
+<!-- RECEIVE RESULT -->
+
+<div
+    id="receiveResult"
+    class="receive-result hidden" role="status" aria-live="polite"
+></div>
+
+</section>
+
+<!-- ========================================================= -->
+
+<!-- ATTACK SIMULATION -->
+
+<!-- ========================================================= -->
+
+<section class="section attack-section" id="attackSection">
+
+<div class="section-heading">
+
+    <span class="section-label attack-label">
+        SECURITY TESTING
+    </span>
+
+    <h2>
+        Security Attack Simulation
+    </h2>
+
+    <p>
+        Demonstrate how the system responds to common
+        attacks against secure communication.
+    </p>
+
+</div>
+
+
+<div class="attack-grid">
+
+
+    <!-- TAMPERING -->
+
+    <div class="attack-card">
+
+        <div class="attack-icon">
+            ⚠️
+        </div>
+
+        <span class="attack-number">
+            ATTACK 01
+        </span>
+
+        <h3>
+            Ciphertext Tampering
+        </h3>
+
+        <p>
+            An attacker modifies encrypted data before
+            it reaches the receiver.
+        </p>
+
+        <div class="attack-hint"><strong>Expected:</strong> Bob <b>rejects</b> the message on Receive (AES-GCM tag fails).</div>
+        <button id="btn-tampering" onclick="runAttack('tampering')"
+        >
+            Simulate Attack
+        </button>
+
+        <div
+            id="result-tampering"
+            class="attack-result" role="status" aria-live="polite"
+        ></div>
+
+    </div>
+
+
+
+    <!-- MESSAGE MODIFICATION -->
+
+    <div class="attack-card">
+
+        <div class="attack-icon">
+            ✍️
+        </div>
+
+        <span class="attack-number">
+            ATTACK 02
+        </span>
+
+        <h3>
+            Message Modification
+        </h3>
+
+        <p>
+            An attacker changes the message after it
+            has been digitally signed.
+        </p>
+
+        <div class="attack-hint"><strong>Expected:</strong> Bob <b>rejects</b> the message on Receive (ML-DSA signature fails).</div>
+        <button id="btn-signature" onclick="runAttack('signature')"
+        >
+            Simulate Attack
+        </button>
+
+        <div
+            id="result-signature"
+            class="attack-result" role="status" aria-live="polite"
+        ></div>
+
+    </div>
+
+
+
+    <!-- REPLAY -->
+
+    <div class="attack-card">
+
+        <div class="attack-icon">
+            🔁
+        </div>
+
+        <span class="attack-number">
+            ATTACK 03
+        </span>
+
+        <h3>
+            Replay Attack
+        </h3>
+
+        <p>
+            An attacker attempts to resend a previously
+            processed message.
+        </p>
+
+        <div class="attack-hint"><strong>Needs:</strong> a message that was already <b>received</b>. Resends are blocked.</div>
+        <button id="btn-replay" onclick="runAttack('replay')"
+        >
+            Simulate Attack
+        </button>
+
+        <div
+            id="result-replay"
+            class="attack-result" role="status" aria-live="polite"
+        ></div>
+
+    </div>
+
+
+
+    <!-- WRONG KEY -->
+
+    <div class="attack-card">
+
+        <div class="attack-icon">
+            🔑
+        </div>
+
+        <span class="attack-number">
+            ATTACK 04
+        </span>
+
+        <h3>
+            Wrong Session Key
+        </h3>
+
+        <p>
+            An attacker attempts to decrypt the packet
+            using another session key.
+        </p>
+
+        <div class="attack-hint"><strong>Passive:</strong> packet is not changed, so Receive still <b>succeeds</b>.</div>
+        <button id="btn-wrong-key" onclick="runAttack('wrong-key')"
+        >
+            Simulate Attack
+        </button>
+
+        <div
+            id="result-wrong-key"
+            class="attack-result" role="status" aria-live="polite"
+        ></div>
+
+    </div>
+
+
+
+    <!-- INTERCEPTION -->
+
+    <div class="attack-card">
+
+        <div class="attack-icon">
+            👁️
+        </div>
+
+        <span class="attack-number">
+            ATTACK 05
+        </span>
+
+        <h3>
+            Packet Interception
+        </h3>
+
+        <p>
+            An attacker captures the packet while it
+            travels through the communication relay.
+        </p>
+
+        <div class="attack-hint"><strong>Passive:</strong> packet is only copied, so Receive still <b>succeeds</b>.</div>
+        <button id="btn-interception" onclick="runAttack('interception')"
+        >
+            Simulate Attack
+        </button>
+
+        <div
+            id="result-interception"
+            class="attack-result" role="status" aria-live="polite"
+        ></div>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+
+<!-- SECURITY SUMMARY -->
+
+<!-- ========================================================= -->
+
+<section class="section security-summary">
+
+<div class="section-heading">
+
+    <span class="section-label">
+        PROTECTION SUMMARY
+    </span>
+
+    <h2>
+        Security Status
+    </h2>
+
+    <p>
+        Security mechanisms demonstrated by the framework.
+    </p>
+
+</div>
+
+
+<div class="security-list">
+
+    <div class="security-item">
+        <span class="check">✓</span>
+        <div>
+            <strong>Post-Quantum Key Establishment</strong>
+            <p>ML-KEM-768 provides the post-quantum key establishment mechanism.</p>
+        </div>
+    </div>
+
+    <div class="security-item">
+        <span class="check">✓</span>
+        <div>
+            <strong>Secure Session-Key Derivation</strong>
+            <p>HKDF-SHA256 turns the ML-KEM shared secret into a 256-bit AES key.</p>
+        </div>
+    </div>
+
+    <div class="security-item">
+        <span class="check">✓</span>
+        <div>
+            <strong>Authenticated Encryption</strong>
+            <p>AES-256-GCM protects confidentiality and integrity of every message.</p>
+        </div>
+    </div>
+
+    <div class="security-item">
+        <span class="check">✓</span>
+        <div>
+            <strong>Post-Quantum Digital Signatures</strong>
+            <p>ML-DSA-65 lets the receiver verify who signed the message.</p>
+        </div>
+    </div>
+
+    <div class="security-item">
+        <span class="check">✓</span>
+        <div>
+            <strong>Replay Protection</strong>
+            <p>Unique, authenticated message IDs stop an accepted message being accepted again.</p>
+        </div>
+    </div>
+
+    <div class="security-item">
+        <span class="check">✓</span>
+        <div>
+            <strong>Tampering Detection</strong>
+            <p>Modified ciphertext or headers fail AES-GCM authentication.</p>
+        </div>
+    </div>
+
+    <div class="security-item">
+        <span class="check">✓</span>
+        <div>
+            <strong>Wrong-Key Rejection</strong>
+            <p>A packet cannot be decrypted with any key other than the session key.</p>
+        </div>
+    </div>
+
+    <div class="security-item">
+        <span class="check">✓</span>
+        <div>
+            <strong>Encrypted Packet Transmission</strong>
+            <p>Intercepted packets contain ciphertext instead of plaintext.</p>
+        </div>
+    </div>
+
+</div>
+
+</section>
+
+<section class="section limitations">
+
+    <div class="section-heading">
+        <span class="section-label">HONEST SCOPE</span>
+        <h2>Project Limitations</h2>
+        <p>This is an academic demonstration, not a production messenger.</p>
+    </div>
+
+    <ul class="limit-list">
+        <li>The relay and all session state live in server memory (no database).</li>
+        <li>There is no login system, and public-key distribution (PKI) is simplified.</li>
+        <li>The ML-KEM handshake itself is not authenticated in this demo.</li>
+        <li>Packet interception is not <em>detected</em>; it is made useless by encryption.</li>
+    </ul>
+
+</section>
+
+</main>
+
+<!-- ========================================================= -->
+
+<!-- FOOTER -->
+
+<!-- ========================================================= -->
+
+<footer>
+
+<div class="footer-title">
+    Post-Quantum Secure Communication Framework
+</div>
+
+<div class="footer-algorithms">
+    ML-KEM-768
+    <span>•</span>
+    AES-256-GCM
+    <span>•</span>
+    HKDF-SHA256
+    <span>•</span>
+    ML-DSA-65
+</div>
+
+<div class="footer-note">
+    Cryptographic demonstration and security testing framework
+</div>
+
+</footer>
+
+<!-- ========================================================= -->
+<!-- ACTIVITY LOG DRAWER -->
+<!-- ========================================================= -->
+<button id="logToggle" class="log-toggle" onclick="toggleLog()" aria-expanded="false" aria-controls="logPanel">
+    &#128203; Activity <span id="logCount" class="log-count">0</span>
+</button>
+<aside id="logPanel" class="log-panel hidden" aria-label="Activity log">
+    <div class="log-header">
+        <strong>Activity Log</strong>
+        <span>
+            <button class="log-clear" onclick="clearLog()">Clear</button>
+            <button class="log-clear" onclick="toggleLog()" aria-label="Close log">&#10005;</button>
+        </span>
+    </div>
+    <ol id="logList" class="log-list">
+        <li class="log-empty">Nothing yet. Send a message to begin.</li>
+    </ol>
+</aside>
+
+<script
+    src="{{ url_for('static', filename='js/app.js') }}"
+></script>
+
+</body>
+
+</html>
